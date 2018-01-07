@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
 
     initGame();
 
-    buttonReset.addEventListener("click", newGame); //na kliknięcie w button resetuje się gra
+    buttonReset.addEventListener("click", initGame); //na kliknięcie w button resetuje się gra
     
     function playerAName(){ //wybranie nazwy gracza A
-        while(!playerA) { // dopoki player A posiada wartość false
+        while(!playerA) { // dopóki player A posiada wartość false
             playerA =prompt("Enter name for player A");    
         } 
     }
@@ -26,10 +26,6 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
             playerB =prompt("Enter name for player B");   
         }
     }
-
-    function newGame(){ //reset gry
-        initGame();
-    } 
 
     function roundInfo(){
         var round = document.getElementById('round-info');
