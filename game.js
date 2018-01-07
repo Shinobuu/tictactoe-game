@@ -7,16 +7,56 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
 
     var currentPlayer;
     var emptyFields;
-    
-    initGame(); // inicjowanie funkcji
+    var playerA;
+    var playerB;
+    var buttonReset= document.getElementById('reset');
 
+    initGame();
+
+    buttonReset.addEventListener("click", newGame); //na kliknięcie w button resetuje się gra
+    
+    function playerAName(){ //wybranie nazwy gracza A
+        while(!playerA) { // dopoki player A posiada wartość false
+            playerA =prompt("Enter name for player A");    
+        } 
+    }
+
+    function playerBName(){ //wybranie nazwy gracza B
+        while(!playerB) { // dopoki player B posiada wartość false
+            playerB =prompt("Enter name for player B");   
+        }
+    }
+
+    function newGame(){ //reset gry
+        initGame();
+    } 
+
+    function roundInfo(){
+        var round = document.getElementById('round-info');
+
+        round.className = playerClasses[currentPlayer];
+        if (currentPlayer === 'playerA'){ // przypisuje do round informations nazwę aktualnego gracza
+            round.innerHTML = `Round for ${playerA}`;
+        }
+       else{ 
+            round.innerHTML = `Round for ${playerB}`;
+       }
+    
+    }
 
     function initGame(){
         var fields= document.querySelectorAll('.board > div'); // znajdź wszystkie divy w .board - są naszymi polami klikalnymi
         emptyFields=9;    
         currentPlayer = 'playerA'; //pierwszy zaczyna gracz A
         fields.forEach(field =>field.addEventListener('click', fieldClickHandler)); // dla każdego field uruchom funkcję kiedy ją klikniemy
-
+        fields.forEach(field=>field.removeAttribute('class'));
+    
+        playerA = false;
+        playerB = false;
+        playerAName();
+        playerBName();
+        
+        roundInfo();
     }
 
     function fieldClickHandler(){
@@ -36,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
         }
         this.removeEventListener('click', fieldClickHandler);
         checkWinner();
+        roundInfo();
     }
 
     function checkWinner (){
@@ -73,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
             //setTimeout chrome fix
             setTimeout(()=>{
                 alert("Red Wins!");
-                initGame();
             },100);
             return;
         }
@@ -81,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
         if (boardCheck.includes ("blueblueblue")){  // niebieski wygrywa
             setTimeout(()=>{
                 alert("Blue Wins!");
-                initGame();
             },100);
             return;
         }
@@ -90,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
         {
             setTimeout(()=>{
                 alert("Nobody Wins");
-                initGame();
             },100);
             return;
         }

@@ -7,19 +7,47 @@
 	width: 300px;
 	margin: 0 auto;
 	font-size: 0;
+	margin-top: 100px;
 }
 
 .board div {
 	height: 100px;
 	width: 100px;
 	display: inline-block;
-	border: 1px solid grey;
+	border: 1px solid black;
 }
 
 .red {
 	background-color: crimson;
+	
 }
 
+.board .red{
+	transition: background-color 0.3s ease-in;
+}
+
+.board .blue {
+	transition: background-color 0.3s ease-in;
+}
 .blue {
 	background-color: cornflowerblue;
+}
+
+h3 {
+	font-size: 18px;
+	text-align: center;
+	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+	padding: 15px;
+}
+#button-box{
+	padding-top: 40px;
+}
+button {
+	display: block;
+	margin: 0 auto;
+}
+
+button:hover {
+	border-color: black;
+	box-shadow: 3px 5px 10px #888888;
 }
