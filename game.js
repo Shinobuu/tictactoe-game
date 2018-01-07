@@ -63,37 +63,35 @@ document.addEventListener('DOMContentLoaded', function(){ // DOMContenLoaded <- 
         // diagonalne możliwości wygranej 048, 246
         var diagonal1 = fields[0].className + fields[4].className + fields[8].className;
         var diagonal2 = fields[2].className + fields[4].className + fields[6].className;
-
-        //sprawdź czy w jakiejś konfguracji jest redredred - czerwony wygrywa
-        if (
-            row1 ==="redredred" ||
-            row2 ==="redredred" ||
-            row3 ==="redredred" ||
-            column1 ==="redredred" ||
-            column2 ==="redredred" ||
-            column3 ==="redredred" ||
-            diagonal1 ==="redredred" ||
-            diagonal2 ==="redredred")
-            { 
-            alert("Red Wins!");
-            return;
-            }
-
-        if (
-            row1 ==="blueblueblue" ||
-            row2 ==="blueblueblue" ||
-            row3 ==="blueblueblue" ||
-            column1 ==="blueblueblue" ||
-            column2 ==="blueblueblue" ||
-            column3 ==="blueblueblue" ||
-            diagonal1 ==="blueblueblue" ||
-            diagonal2 ==="blueblueblue"){ 
-            alert("Blue Wins!");
+       
+        // zrób tablicę, sprawdź czy w jakiejś konfguracji jest redredred - czerwony wygrywa
+        var boardCheck =[
+            row1, row2, row3, column1, column2, column3, diagonal1, diagonal2
+        ];
+        
+        if (boardCheck.includes ("redredred")){ //czerwony wygrywa
+            //setTimeout chrome fix
+            setTimeout(()=>{
+                alert("Red Wins!");
+                initGame();
+            },100);
             return;
         }
+        
+        if (boardCheck.includes ("blueblueblue")){  // niebieski wygrywa
+            setTimeout(()=>{
+                alert("Blue Wins!");
+                initGame();
+            },100);
+            return;
+        }
+       
         if (emptyFields===0) //brak wygranych 
         {
-            alert('tie');
+            setTimeout(()=>{
+                alert("Nobody Wins");
+                initGame();
+            },100);
             return;
         }
     }
