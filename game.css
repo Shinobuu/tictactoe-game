@@ -7,7 +7,7 @@
 	width: 300px;
 	margin: 0 auto;
 	font-size: 0;
-	margin-top: 100px;
+	margin-top: 40px;
 }
 
 .board div {
@@ -33,12 +33,16 @@
 	background-color: cornflowerblue;
 }
 
-h3 {
+h3, h1, #score {
 	font-size: 18px;
 	text-align: center;
 	font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
 	padding: 15px;
 }
+h1{
+	font-size: 25px;
+}
+
 #button-box{
 	padding-top: 40px;
 }
@@ -46,7 +50,9 @@ button {
 	display: block;
 	margin: 0 auto;
 }
-
+#score{
+	text-align: center;
+}
 button:hover {
 	border-color: black;
 	box-shadow: 3px 5px 10px #888888;
